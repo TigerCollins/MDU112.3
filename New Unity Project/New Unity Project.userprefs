@@ -1,10 +1,11 @@
 ﻿<Properties StartupItem="Assembly-CSharp.csproj">
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="Unity.Instance.Unity Editor" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\Level\Gameplay\MouseCamXAxis.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\Level\Gameplay\MouseCamera.cs">
     <Files>
+      <File FileName="Assets\Scripts\Level\Gameplay\MouseCamera.cs" Line="14" Column="7" />
       <File FileName="Assets\Scripts\Continuous_Audio.cs" Line="8" Column="22" />
-      <File FileName="Assets\Scripts\Level\Gameplay\MouseCamera.cs" Line="5" Column="1" />
-      <File FileName="Assets\Scripts\Level\Gameplay\MouseCamXAxis.cs" Line="12" Column="3" />
+      <File FileName="Assets\Scripts\Level\Gameplay\PlayerRotate.cs" Line="12" Column="47" />
+      <File FileName="Assets\Scripts\Level\UI\ESC_Pause.cs" Line="1" Column="1" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
