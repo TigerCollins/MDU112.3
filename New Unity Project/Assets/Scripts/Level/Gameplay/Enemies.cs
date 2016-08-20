@@ -5,22 +5,36 @@ public class Enemies : MonoBehaviour {
     private float health = 100f;
     public float points;
     public Transform Player;
-    public GameObject self;
-    public float Speed = 50;
+    public GameObject self; 
+    public PlayerController PlayerController;
+    [SerializeField]
+    private float enemiesLeft;
+
+  
+
 
     private void awake()
     {
 
+      
     }
 
-    private void start()
+    public void start()
     {
+        //PlayerController.EnemyCount = enemiesLeft;
+        enemiesLeft = GameObject.FindGameObjectsWithTag("Enemy").Length;
+        print("Oh no!" + enemiesLeft);
+    }
+
+    public void update()
+    {
+
+       
        
     }
-
     public void EnemyAirBasic()
     {
-
+        
         
         transform.LookAt(Player);
         
