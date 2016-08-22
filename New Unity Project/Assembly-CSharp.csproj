@@ -45,11 +45,12 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-     <Compile Include="Assets\BulletCollision.cs" />
      <Compile Include="Assets\Objects\World\Skyboxes\Stagit\SkyboxEarthPlanets\script\skyboxspace_demo_v1.cs" />
      <Compile Include="Assets\Objects\World\Skyboxes\Stagit\SkyboxEarthPlanets\script\skyboxspace_mouselook_v1.cs" />
      <Compile Include="Assets\Objects\World\omega_fighter_01\script\MouseLook.cs" />
      <Compile Include="Assets\Scripts\Continuous_Audio.cs" />
+     <Compile Include="Assets\Scripts\Level\Gameplay\BoostCollision.cs" />
+     <Compile Include="Assets\Scripts\Level\Gameplay\BulletCollision.cs" />
      <Compile Include="Assets\Scripts\Level\Gameplay\Enemies.cs" />
      <Compile Include="Assets\Scripts\Level\Gameplay\PlayerController.cs" />
      <Compile Include="Assets\Scripts\Level\UI\ESC_Pause.cs" />

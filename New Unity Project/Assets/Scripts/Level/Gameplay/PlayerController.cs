@@ -17,7 +17,7 @@ public class PlayerController : MonoBehaviour {
 
     //Player Stats
     private float Health = 100;
-    private float dmg = 25;
+    public float dmg = 25;
     private float Score = 10;
 
     //UI
@@ -27,19 +27,38 @@ public class PlayerController : MonoBehaviour {
     public Image enemySlider;
     public float Enemies = 1;
     public Text ScoreText;
+    public Text boostRemaining;
+    public Image boostSlider;
 
+    
     //Player Combat
-    private float ProjectileForce = 4000f;
+    private float ProjectileForce = 40000f;
     public GameObject Projectile;
     public GameObject ProjectileSpawner;
-    
-    
+
+    //Boost
+    [SerializeField]
+    private float Boost;
+    public GameObject boostAsset;
+    private float boostTimer;
+
+
 
     //Constructor
     // [SerializeField]
 
 
 
+    void OnTriggerEnter(Collision hit)
+    {
+        
+        if(hit.transform.gameObject.tag == "Boost")
+        {
+            boostAsset.active = false;
+            Boost = 10f;
+        }
+           
+    }
 
     void Awake()
     {
@@ -60,8 +79,20 @@ public class PlayerController : MonoBehaviour {
        
         Enemies = (GameObject.FindGameObjectsWithTag("Enemy").Length);
 
-        //Constructor
-        
+        boostRemaining.text = (Boost * 10).ToString("F0");
+        boostSlider.fillAmount = (Boost*10) / 100;
+
+        //Boost
+
+        if (Boost > 0)
+        {
+            Boost = Boost - Time.deltaTime;
+        }
+
+        else
+        {
+            Boost = 0;
+        }
         
         //Player Movement
         if (Input.GetKey("w"))
@@ -98,14 +129,20 @@ public class PlayerController : MonoBehaviour {
         {
             GameObject Laser; //TUTORIAL FOLLOWED FROM (http://answers.unity3d.com/questions/19710/shooting-a-bullet-projectile-properly.html)
             Laser = Instantiate(Projectile, ProjectileSpawner.transform.position, ProjectileSpawner.transform.rotation) as GameObject;
-            Laser.transform.Rotate(90,90,0);
+            Laser.transform.Rotate(90, 90, 0);
             Rigidbody LaserRigidBody;
             LaserRigidBody = Laser.GetComponent<Rigidbody>();
             LaserRigidBody.AddForce(transform.forward * ProjectileForce);
-            Destroy(Laser, 4);    
+            Destroy(Laser, 4);
         }
-        
+
         //GameOver
+        if(Enemies == 4)
+        {
+            Screen.lockCursor = false;
+            Application.LoadLevel("GameOver");
+        }
+
         if (Health == 0f)
         {
             Screen.lockCursor = false;
@@ -114,4 +151,5 @@ public class PlayerController : MonoBehaviour {
         }
        
 	}
+
 }

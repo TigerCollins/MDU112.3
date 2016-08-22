@@ -2,62 +2,28 @@
 using System.Collections;
 
 public class Enemies : MonoBehaviour {
-    private float health = 100f;
-    public float points;
-    public Transform Player;
-    public GameObject self; 
-    public PlayerController PlayerController;
-    [SerializeField]
-    private float enemiesLeft;
-
-  
+    public float health = 100;
 
 
-    private void awake()
+	// Use this for initialization
+	void Start () {
+	
+	}
+	
+    void OnCollisionEnter(Collision hit)
     {
-
-      
-    }
-
-    public void start()
-    {
-        //PlayerController.EnemyCount = enemiesLeft;
-        enemiesLeft = GameObject.FindGameObjectsWithTag("Enemy").Length;
-        print("Oh no!" + enemiesLeft);
-    }
-
-    public void update()
-    {
-
-       
-       
-    }
-    public void EnemyAirBasic()
-    {
-        
-        
-        transform.LookAt(Player);
-        
-        
-        /*
-        if (health == 0)
+        if (hit.gameObject.tag == "Laser")
         {
-           
+            health = health - 10;
+            if (health < 0)
+            {
+                Destroy(gameObject);
+            }
         }
-        */
     }
 
-    /*public float EnemyGroundBasic()
-    {
-        transform.LookAt(Player.transform);
-        points += 10;
-        return points; 
-        /*if (health == 0)
-        {
-            
-        }
-        
-
-    }*/
-    
+	// Update is called once per frame
+	void Update () {
+	
+	}
 }
