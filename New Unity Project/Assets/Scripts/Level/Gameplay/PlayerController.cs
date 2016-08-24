@@ -51,8 +51,8 @@ public class PlayerController : MonoBehaviour {
 
     void OnTriggerEnter(Collision hit)
     {
-        
-        if(hit.transform.gameObject.tag == "Boost")
+
+       * if (hit.transform.gameObject.tag == "Boost")
         {
             boostAsset.active = false;
             Boost = 10f;
@@ -74,10 +74,11 @@ public class PlayerController : MonoBehaviour {
 
         EnemyAmount.text = Enemies.ToString();
         enemySlider.fillAmount = Enemies / 8;
+        Enemies = (GameObject.FindGameObjectsWithTag("Enemy").Length);
 
         ScoreText.text = Score.ToString();
        
-        Enemies = (GameObject.FindGameObjectsWithTag("Enemy").Length);
+        
 
         boostRemaining.text = (Boost * 10).ToString("F0");
         boostSlider.fillAmount = (Boost*10) / 100;
@@ -137,7 +138,7 @@ public class PlayerController : MonoBehaviour {
         }
 
         //GameOver
-        if(Enemies == 4)
+        if(Enemies == 0)
         {
             Screen.lockCursor = false;
             Application.LoadLevel("GameOver");
