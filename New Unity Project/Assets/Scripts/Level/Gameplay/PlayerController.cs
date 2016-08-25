@@ -17,7 +17,7 @@ public class PlayerController : MonoBehaviour
     private float x, y = 0;
 
     //Player Stats
-    private float Health = 10;
+    private float Health = 100;
     public float dmg = 25;
 
 
