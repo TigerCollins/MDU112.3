@@ -18,7 +18,7 @@ public class PlayerController : MonoBehaviour {
     //Player Stats
     private float Health = 100;
     public float dmg = 25;
-    private float Score = 10;
+    
 
     //UI
     public Text HealthAmount;
@@ -26,9 +26,10 @@ public class PlayerController : MonoBehaviour {
     public Text EnemyAmount;
     public Image enemySlider;
     public float Enemies = 1;
-    public Text ScoreText;
     public Text boostRemaining;
     public Image boostSlider;
+    public Text ScoreText;
+    
 
     
     //Player Combat
@@ -49,15 +50,13 @@ public class PlayerController : MonoBehaviour {
 
 
 
-    void OnTriggerEnter(Collision hit)
+    void OnCollisionEnter(Collision hit)
     {
-
-       * if (hit.transform.gameObject.tag == "Boost")
+       if (hit.transform.gameObject.tag == "Boost")
         {
-            boostAsset.active = false;
             Boost = 10f;
+            print("swag");
         }
-           
     }
 
     void Awake()
@@ -76,7 +75,7 @@ public class PlayerController : MonoBehaviour {
         enemySlider.fillAmount = Enemies / 8;
         Enemies = (GameObject.FindGameObjectsWithTag("Enemy").Length);
 
-        ScoreText.text = Score.ToString();
+       
        
         
 
@@ -150,7 +149,18 @@ public class PlayerController : MonoBehaviour {
             Application.LoadLevel("GameOver");
 
         }
-       
+
+        //Score
+        float MaxEnemies = 80;
+
+        ScoreText.text = (MaxEnemies - (Enemies*10)).ToString("f0");
 	}
+
+    public void BoostName()
+    {
+        int[] numbers = new int[2] { 1, 2 };
+        string[] names = new string[2] { "Health Boost", "Damage Boost" };
+    }
+   
 
 }

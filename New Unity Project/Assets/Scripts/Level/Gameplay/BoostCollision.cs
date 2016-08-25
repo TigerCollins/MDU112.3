@@ -1,15 +1,24 @@
 ﻿using UnityEngine;
 using System.Collections;
+using UnityEngine.UI;
 
-public class BoostCollision : MonoBehaviour {
+public class BoostCollision : MonoBehaviour
+{
+    //Boost
+    public GameObject BoostAsset;
 
-    
-   void OnCollisionEnter(Collision collide)
+    //UI
+    public Text BoostName;
+
+    void OnCollisionEnter(Collision hit)
     {
-        //if()
-      //  Destroy(gameObject);
-            //Can't figure out why object isn't colliding with "Player" Tag.
+        if (hit.transform.gameObject.tag == "Player")
+        {
+            BoostAsset.active = false;
+            print("self");
+
+        }
     }
-    
+
 }
 
