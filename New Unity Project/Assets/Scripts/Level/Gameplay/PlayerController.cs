@@ -127,7 +127,7 @@ public class PlayerController : MonoBehaviour
                 boostName.text = "";
             }
 
-
+        }
 
 
 
