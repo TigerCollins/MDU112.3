@@ -11,6 +11,8 @@ public class Enemies : MonoBehaviour
     //boost
     public GameObject BoostAsset;
     public GameObject BoostSpawner;
+    public Text boostName;
+    public float damageTake = 20f;
 
     void OnCollisionEnter(Collision hit)
     {
@@ -18,7 +20,7 @@ public class Enemies : MonoBehaviour
         if (hit.gameObject.tag == "Laser")
         {
            
-            health = health - 20;
+            health = health - damageTake;
             if (health < 0)
             {               
                
@@ -35,8 +37,16 @@ public class Enemies : MonoBehaviour
 	// Update is called once per frame
 	void Update ()
     {
-        
-       
+        if (boostName.text == "Damage Boost")
+        {
+            damageTake = 40;
+        }
+
+        else
+        {
+            damageTake = 20;
+        }
+
 
     }
         

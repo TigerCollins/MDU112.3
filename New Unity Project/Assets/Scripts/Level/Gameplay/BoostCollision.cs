@@ -15,7 +15,6 @@ public class BoostCollision : MonoBehaviour
         if (hit.transform.gameObject.tag == "Player")
         {
             BoostAsset.active = false;
-            print("self");
 
         }
     }

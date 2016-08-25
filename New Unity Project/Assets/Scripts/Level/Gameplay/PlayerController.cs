@@ -16,7 +16,7 @@ public class PlayerController : MonoBehaviour {
     private float x, y = 0;
 
     //Player Stats
-    private float Health = 100;
+    private float Health = 10;
     public float dmg = 25;
     
 
@@ -28,6 +28,7 @@ public class PlayerController : MonoBehaviour {
     public float Enemies = 1;
     public Text boostRemaining;
     public Image boostSlider;
+    public Text boostName;
     public Text ScoreText;
     
 
@@ -42,6 +43,7 @@ public class PlayerController : MonoBehaviour {
     private float Boost;
     public GameObject boostAsset;
     private float boostTimer;
+    public float boostOptionTimer = 0;
 
 
 
@@ -55,7 +57,7 @@ public class PlayerController : MonoBehaviour {
        if (hit.transform.gameObject.tag == "Boost")
         {
             Boost = 10f;
-            print("swag");
+            boostOptionTimer = 0.1f;
         }
     }
 
@@ -83,17 +85,52 @@ public class PlayerController : MonoBehaviour {
         boostSlider.fillAmount = (Boost*10) / 100;
 
         //Boost
+        int[] numbers = new int[2] { 0, 1 };
+        string[] names = new string[2] { "Health Boost", "Damage Boost"};
 
         if (Boost > 0)
         {
             Boost = Boost - Time.deltaTime;
+            
+            boostOptionTimer = boostOptionTimer - Time.deltaTime;
         }
 
         else
         {
             Boost = 0;
+            boostName.text = "";
         }
-        
+
+
+        if (boostOptionTimer >= 0)
+        {
+            boostName.text = names[Random.Range(0, names.Length)];
+        }
+
+        if (boostOptionTimer <= 0)
+        {
+           
+            if (boostName.text == "Health Boost")
+            {
+                Health += 10;
+                if (boostRemaining.text == "0")
+                {
+                    Health -= 10;
+                }
+            }
+
+            
+
+        if(boostRemaining.text == "0")
+        {
+            boostName.text = "";
+        }
+       
+
+       
+      
+      
+
         //Player Movement
         if (Input.GetKey("w"))
         {
@@ -154,13 +191,9 @@ public class PlayerController : MonoBehaviour {
         float MaxEnemies = 80;
 
         ScoreText.text = (MaxEnemies - (Enemies*10)).ToString("f0");
-	}
 
-    public void BoostName()
-    {
-        int[] numbers = new int[2] { 1, 2 };
-        string[] names = new string[2] { "Health Boost", "Damage Boost" };
+      
+      
     }
-   
 
 }
